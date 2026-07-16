@@ -66,16 +66,7 @@ h1 em, .cta h2 em { color: var(--coral); font-family: Georgia, serif; font-weigh
 .image-frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7,36,32,.1), transparent 55%), linear-gradient(0deg, rgba(7,36,32,.28), transparent 45%); }
 .image-frame picture { display: block; width: 100%; height: 100%; }
 .image-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 63% center; filter: saturate(.82) contrast(1.02); transform: scale(1.015); }
-.availability-card { position: absolute; left: -7%; bottom: 38px; z-index: 3; min-width: 270px; background: var(--white); padding: 18px; box-shadow: 0 18px 45px rgba(20,42,39,.18); display: flex; align-items: center; gap: 12px; }
-.status-dot { width: 10px; height: 10px; background: #63b978; border: 3px solid #d8f1de; border-radius: 50%; box-sizing: content-box; }
-.availability-card div { flex: 1; }
-.availability-card small { display: block; font: 700 8px/1 "Manrope"; letter-spacing: 1.2px; color: rgba(20,42,39,.45); margin-bottom: 5px; }
-.availability-card strong { font-size: 12px; }
-.availability-card button { width: 34px; height: 34px; border: 0; background: var(--ink); color: white; }
 .location-pill { position: absolute; right: 13px; top: 29px; z-index: 4; color: white; background: rgba(15,67,59,.86); backdrop-filter: blur(7px); padding: 10px 15px; font-size: 10px; font-weight: 700; border-radius: 20px; }
-.hero-stamp { position: absolute; width: 95px; height: 95px; right: -18px; bottom: 42px; z-index: 4; background: var(--lime); color: var(--ink); border-radius: 50%; display: grid; place-content: center; text-align: center; transform: rotate(8deg); box-shadow: 0 15px 35px rgba(20,42,39,.22); }
-.hero-stamp strong { font: 800 24px/1 "Manrope"; letter-spacing: -1px; }
-.hero-stamp span { margin-top: 4px; font: 800 7px/1.2 "Manrope"; letter-spacing: 1px; }
 .scroll-cue { position: absolute; bottom: 20px; left: clamp(24px,5vw,76px); display: flex; align-items: center; gap: 10px; font: 700 8px "Manrope"; letter-spacing: 1.2px; }
 .scroll-cue span { width: 35px; height: 1px; background: var(--ink); position: relative; overflow: hidden; }
 .scroll-cue span::after { content: ""; position: absolute; width: 14px; inset-block: 0; background: var(--coral); animation: cue 1.8s ease-in-out infinite; }
@@ -228,7 +219,8 @@ textarea { resize: vertical; }
 .booking-summary i { color: var(--coral); font-style: normal; }
 .submit-booking { margin-top: 13px; width: 100%; background: #168b53; color: white; border: 0; padding: 10px 10px 10px 18px; display: flex; align-items: center; justify-content: space-between; font-weight: 700; transition: background .25s, transform .25s; }
 .submit-booking:hover { background: #0f7845; transform: translateY(-2px); }
-.wa-mark { width: 39px; height: 39px; display: grid; place-items: center; border-radius: 50%; background: white; color: #168b53; font-size: 21px; }
+.wa-mark { width: 39px; height: 39px; display: grid; place-items: center; border-radius: 50%; background: white; color: #168b53; }
+.wa-mark svg { width: 23px; height: 23px; fill: currentColor; }
 .form-note { display: block; color: rgba(20,42,39,.48); font-size: 9px; text-align: center; margin-top: 12px; }
 .toast { position: fixed; right: 25px; bottom: 25px; z-index: 150; background: var(--ink); color: white; padding: 16px 22px; display: flex; align-items: center; gap: 13px; box-shadow: 0 15px 35px rgba(0,0,0,.25); transform: translateY(120px); opacity: 0; transition: .35s; }
 .toast.show { transform: translateY(0); opacity: 1; }
@@ -239,7 +231,8 @@ textarea { resize: vertical; }
 .mobile-book-dock { display: none; }
 .whatsapp-float { position: fixed; z-index: 38; right: 22px; bottom: 22px; height: 52px; background: #168b53; color: white; display: flex; align-items: center; gap: 9px; padding: 7px 16px 7px 7px; border-radius: 28px; box-shadow: 0 12px 32px rgba(10,75,44,.3); transition: transform .25s; }
 .whatsapp-float:hover { transform: translateY(-4px); }
-.whatsapp-float span { width: 38px; height: 38px; border-radius: 50%; background: white; color: #168b53; display: grid; place-items: center; font-size: 20px; }
+.whatsapp-float span { width: 38px; height: 38px; border-radius: 50%; background: white; color: #168b53; display: grid; place-items: center; }
+.whatsapp-float span svg { width: 23px; height: 23px; fill: currentColor; }
 .whatsapp-float small { font: 800 8px "Manrope"; letter-spacing: 1px; }
 
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s, transform .7s; }
@@ -278,10 +271,7 @@ textarea { resize: vertical; }
   .image-frame { left: 0; top: 5%; clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%, 0 12%); }
   .image-frame img { object-position: 64% center; }
   .sun-shape { width: 85%; }
-  .availability-card { left: 0; bottom: 18px; min-width: 250px; }
   .location-pill { right: 7px; top: 8px; }
-  .hero-stamp { width: 76px; height: 76px; right: -6px; bottom: 28px; }
-  .hero-stamp strong { font-size: 19px; }
   .scroll-cue { display: none; }
   .island-strip { justify-content: flex-start; overflow: auto; scrollbar-width: none; min-height: 56px; }
   .quick-bar { grid-template-columns: 1fr; padding: 10px 20px; }
