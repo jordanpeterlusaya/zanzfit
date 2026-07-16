@@ -18,7 +18,7 @@
 
   <header class="site-header" id="home">
     <a class="brand" href="#home" aria-label="ZanziFit home">
-      <span class="brand-mark">ZF</span>
+      <picture class="brand-logo"><source srcset="assets/logo-small.webp" type="image/webp"><img src="assets/logo.png" alt="ZanziFit logo"></picture>
       <span>ZANZI<span>FIT</span></span>
     </a>
 
@@ -105,19 +105,17 @@
       </div>
 
       <div class="experience-grid">
-        <article class="experience-card large reveal">
-          <div class="card-image"><img src="assets/1.png" alt="Personal strength coaching"></div>
-          <div class="card-copy"><span>01</span><div><h3>Personal Training</h3><p>A focused 1-on-1 session built around your goals and fitness level.</p></div><button data-package="Personal Training" data-open-booking>↗</button></div>
+        <article class="service-card reveal">
+          <div class="service-media"><img src="assets/service-personal.jpg" alt="Personal trainer guiding a client during a workout" loading="lazy"><span class="service-number">01</span><span class="service-duration">60 MIN</span></div>
+          <div class="service-copy"><div><h3>Personal Training</h3><p>A focused 1-on-1 session built around your goals and fitness level.</p></div><button data-package="Personal Training" data-open-booking aria-label="Book personal training">↗</button></div>
         </article>
-        <article class="experience-card coral reveal">
-          <div class="line-icon">☀</div>
-          <div><span>02</span><h3>Beach HIIT</h3><p>Energy, ocean air and a full-body workout on Zanzibar's coast.</p></div>
-          <button data-package="Beach HIIT" data-open-booking>Book this <span>↗</span></button>
+        <article class="service-card reveal">
+          <div class="service-media"><img src="assets/service-hiit.jpg" alt="Two people doing a high-intensity beach workout" loading="lazy"><span class="service-number">02</span><span class="service-duration">45–60 MIN</span></div>
+          <div class="service-copy"><div><h3>Beach HIIT</h3><p>Energy, ocean air and a full-body workout on Zanzibar's coast.</p></div><button data-package="Beach HIIT" data-open-booking aria-label="Book beach HIIT">↗</button></div>
         </article>
-        <article class="experience-card dark reveal">
-          <div class="line-icon">◒</div>
-          <div><span>03</span><h3>Mobility & Yoga</h3><p>Restore, stretch and reset after travel or adventure.</p></div>
-          <button data-package="Mobility & Yoga" data-open-booking>Book this <span>↗</span></button>
+        <article class="service-card reveal">
+          <div class="service-media"><img src="assets/service-yoga.jpg" alt="Woman practicing mobility and yoga on the beach" loading="lazy"><span class="service-number">03</span><span class="service-duration">60 MIN</span></div>
+          <div class="service-copy"><div><h3>Mobility & Yoga</h3><p>Restore, stretch and reset after travel or adventure.</p></div><button data-package="Mobility & Yoga" data-open-booking aria-label="Book mobility and yoga">↗</button></div>
         </article>
       </div>
     </section>
@@ -218,7 +216,7 @@
   </main>
 
   <footer>
-    <a class="brand" href="#home"><span class="brand-mark">ZF</span><span>ZANZI<span>FIT</span></span></a>
+    <a class="brand" href="#home"><picture class="brand-logo"><source srcset="assets/logo-small.webp" type="image/webp"><img src="assets/logo.png" alt="ZanziFit logo"></picture><span>ZANZI<span>FIT</span></span></a>
     <p>Personal fitness, wherever you stay in Zanzibar.</p>
     <div class="footer-links"><a href="mailto:hello@zanzifit.com">hello@zanzifit.com</a><a href="tel:+255777123456">+255 777 123 456</a></div>
     <small>© <span id="year"></span> ZanziFit. All good energy reserved.</small>

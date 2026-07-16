@@ -25,7 +25,8 @@ img { display: block; max-width: 100%; }
 .site-header.scrolled { height: 70px; background: rgba(245,240,230,.96); box-shadow: 0 8px 35px rgba(20,42,39,.08); }
 .brand { font: 800 20px/1 "Manrope", sans-serif; letter-spacing: -.8px; display: flex; align-items: center; gap: 10px; width: max-content; }
 .brand > span:last-child > span { color: var(--coral); }
-.brand-mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--ink); color: var(--cream); font-size: 11px; letter-spacing: -.4px; }
+.brand-logo { display: block; width: 43px; height: 43px; overflow: hidden; border-radius: 10px; background: #050608; box-shadow: 0 6px 18px rgba(5,6,8,.16); }
+.brand-logo img { width: 100%; height: 100%; object-fit: cover; }
 .desktop-nav { display: flex; align-items: center; gap: 34px; font-size: 13px; font-weight: 600; }
 .desktop-nav a { position: relative; }
 .desktop-nav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -7px; height: 2px; background: var(--coral); transition: .25s; }
@@ -100,7 +101,21 @@ h1 em, .cta h2 em { color: var(--coral); font-family: Georgia, serif; font-weigh
 .section-heading > p { line-height: 1.7; font-size: 14px; max-width: 430px; color: rgba(20,42,39,.64); margin: 0 0 5px; }
 
 .experience { background: var(--white); }
-.experience-grid { display: grid; grid-template-columns: 1.45fr .8fr .8fr; gap: 16px; }
+.experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.service-card { min-width: 0; background: var(--cream); transition: transform .35s, box-shadow .35s; }
+.service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+.service-media { height: 360px; position: relative; overflow: hidden; background: var(--ink); }
+.service-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,25,22,.06), rgba(10,25,22,.38)); }
+.service-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1), filter .4s; }
+.service-card:hover .service-media img { transform: scale(1.045); }
+.service-number, .service-duration { position: absolute; z-index: 2; top: 16px; padding: 8px 11px; font: 800 8px "Manrope"; letter-spacing: 1px; }
+.service-number { left: 16px; background: var(--coral); color: white; }
+.service-duration { right: 16px; background: rgba(255,253,248,.9); color: var(--ink); backdrop-filter: blur(8px); }
+.service-copy { min-height: 128px; padding: 22px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.service-copy h3 { font: 700 18px "Manrope"; letter-spacing: -.5px; margin: 0 0 7px; }
+.service-copy p { max-width: 290px; margin: 0; color: rgba(20,42,39,.6); font-size: 11px; line-height: 1.55; }
+.service-copy button { flex: 0 0 42px; width: 42px; height: 42px; border: 0; border-radius: 50%; background: var(--ink); color: white; font-size: 15px; transition: background .25s, transform .25s; }
+.service-copy button:hover { background: var(--coral); transform: rotate(45deg); }
 .experience-card { min-height: 470px; position: relative; overflow: hidden; }
 .experience-card.large { background: var(--mint); display: flex; flex-direction: column; }
 .card-image { flex: 1; min-height: 310px; overflow: hidden; }
@@ -251,6 +266,7 @@ textarea { resize: vertical; }
   .hero { grid-template-columns: 46% 54%; }
   .hero-content > p { font-size: 15px; }
   .experience-grid { grid-template-columns: 1.2fr 1fr; }
+  .service-card:last-child { grid-column: 1/-1; }
   .experience-card.dark { grid-column: 1/-1; min-height: 300px; }
   .packages { grid-template-columns: 1fr; }
   .packages-intro { position: static; }
@@ -285,6 +301,9 @@ textarea { resize: vertical; }
   .section-heading { grid-template-columns: 1fr; gap: 22px; margin-bottom: 38px; }
   h1, h2 { letter-spacing: -2.8px; }
   .experience-grid, .trainer-grid, .about, .cta { grid-template-columns: 1fr; }
+  .service-card:last-child { grid-column: auto; }
+  .service-media { height: min(100vw, 420px); }
+  .service-copy { min-height: 118px; }
   .experience-card, .experience-card.dark { min-height: 390px; grid-column: auto; }
   .experience-card.large { min-height: 470px; }
   .card-copy { padding: 21px 18px; }
