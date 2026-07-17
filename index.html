@@ -120,6 +120,15 @@
       </div>
     </section>
 
+    <section class="stats" aria-label="ZanziFit by the numbers">
+      <div class="stats-inner">
+        <article class="stat reveal"><strong data-count="200" data-suffix="+">0</strong><span>Guests trained</span></article>
+        <article class="stat reveal"><strong data-count="4.9" data-decimals="1">0</strong><span>Average rating</span></article>
+        <article class="stat reveal"><strong data-count="15" data-suffix="+">0</strong><span>Island locations</span></article>
+        <article class="stat reveal"><strong data-count="30" data-suffix="min">0</strong><span>Avg. confirmation</span></article>
+      </div>
+    </section>
+
     <section class="trainers section" id="trainers">
       <div class="section-heading reveal">
         <div><span class="kicker">MEET YOUR COACH</span><h2>Local energy.<br>World-class coaching.</h2></div>
@@ -170,8 +179,29 @@
     <section class="about section" id="about">
       <div class="about-card reveal">
         <span class="big-quote">“</span>
-        <blockquote>I booked three sunrise sessions during our stay in Paje. Aisha was punctual, kind, and somehow made every workout feel like part of the holiday.</blockquote>
-        <div class="guest"><span>LH</span><div><strong>Laura H.</strong><small>Guest from Amsterdam · Stayed in Paje</small></div></div>
+        <div class="testimonials">
+          <div class="testimonial active">
+            <blockquote>I booked three sunrise sessions during our stay in Paje. Aisha was punctual, kind, and somehow made every workout feel like part of the holiday.</blockquote>
+            <div class="guest"><span>LH</span><div><strong>Laura H.</strong><small>Guest from Amsterdam · Stayed in Paje</small></div></div>
+          </div>
+          <div class="testimonial">
+            <blockquote>Salim pushed me in the best way. Beach HIIT at Nungwi was the highlight of the trip — professional, motivating and genuinely fun.</blockquote>
+            <div class="guest"><span>MR</span><div><strong>Marco R.</strong><small>Guest from Milan · Stayed in Nungwi</small></div></div>
+          </div>
+          <div class="testimonial">
+            <blockquote>Booking on WhatsApp took two minutes and the trainer arrived right at our villa. Everything felt safe, easy and premium from start to finish.</blockquote>
+            <div class="guest"><span>SK</span><div><strong>Sofia K.</strong><small>Guest from Berlin · Stayed in Matemwe</small></div></div>
+          </div>
+        </div>
+        <div class="testimonial-controls">
+          <button class="t-prev" aria-label="Previous testimonial">←</button>
+          <div class="testimonial-dots" role="tablist" aria-label="Choose testimonial">
+            <button class="active" data-testimonial="0" aria-label="Testimonial 1"></button>
+            <button data-testimonial="1" aria-label="Testimonial 2"></button>
+            <button data-testimonial="2" aria-label="Testimonial 3"></button>
+          </div>
+          <button class="t-next" aria-label="Next testimonial">→</button>
+        </div>
       </div>
       <div class="about-copy reveal">
         <span class="kicker">WHY ZANZIFIT</span>
@@ -229,25 +259,59 @@
     <div class="modal-backdrop" data-close-booking></div>
     <div class="booking-panel">
       <button class="close-modal" data-close-booking aria-label="Close booking">×</button>
-      <div class="booking-head"><span class="kicker">BOOK YOUR SESSION</span><h2 id="booking-title">Let's move.</h2><p>Share a few details. Your request will open in WhatsApp, ready to send directly to ZanziFit.</p><div class="secure-row"><span>● Live booking</span><span>✓ No payment now</span><span>↗ WhatsApp confirmation</span></div></div>
-      <form id="booking-form">
-        <div class="form-grid">
-          <label>Full name<input type="text" name="name" placeholder="Your name" required></label>
-          <label>WhatsApp number<input type="tel" name="phone" placeholder="+255 ..." required></label>
-          <label>Where are you staying?<select name="location" required><option value="">Select area</option><option>Stone Town</option><option>Nungwi / Kendwa</option><option>Paje / Jambiani</option><option>Matemwe</option><option>Other area</option></select></label>
-          <label>Preferred trainer<select name="trainer" id="trainer-select"><option>Best available</option><option>Juma M.</option><option>Aisha K.</option><option>Salim N.</option></select></label>
-          <label>Session type<select name="package" id="package-select"><option>Personal Training</option><option>Beach HIIT</option><option>Mobility & Yoga</option><option>Island Starter</option><option>Holiday Rhythm</option><option>Fit Escape</option></select></label>
-          <label>Preferred date<input type="date" name="date" id="booking-date" required></label>
-          <label>Preferred time<select name="time" required><option value="">Choose time</option><option>06:30 AM</option><option>08:00 AM</option><option>10:00 AM</option><option>04:00 PM</option><option>05:30 PM</option><option>07:00 PM</option></select></label>
-          <label>Fitness level<select name="level"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></label>
+      <div class="booking-head"><span class="kicker">BOOK YOUR SESSION</span><h2 id="booking-title">Let's move.</h2><p>Three quick steps. Your request opens in WhatsApp, ready to send directly to ZanziFit.</p></div>
+
+      <div class="wizard-progress" aria-hidden="true">
+        <div class="wizard-track"><span class="wizard-fill"></span></div>
+        <ol class="wizard-dots">
+          <li class="active" data-step-dot="1"><b>1</b><small>Session</small></li>
+          <li data-step-dot="2"><b>2</b><small>Schedule</small></li>
+          <li data-step-dot="3"><b>3</b><small>Details</small></li>
+        </ol>
+      </div>
+
+      <form id="booking-form" novalidate>
+        <fieldset class="wizard-step active" data-step="1">
+          <legend class="step-legend"><span>Step 1 of 3</span>Choose your session</legend>
+          <div class="form-grid">
+            <label>Where are you staying?<select name="location" required><option value="">Select area</option><option>Stone Town</option><option>Nungwi / Kendwa</option><option>Paje / Jambiani</option><option>Matemwe</option><option>Other area</option></select></label>
+            <label>Session type<select name="package" id="package-select"><option>Personal Training</option><option>Beach HIIT</option><option>Mobility & Yoga</option><option>Island Starter</option><option>Holiday Rhythm</option><option>Fit Escape</option></select></label>
+          </div>
+          <p class="step-help">Pick where you'd like to train and the kind of session you're after.</p>
+        </fieldset>
+
+        <fieldset class="wizard-step" data-step="2">
+          <legend class="step-legend"><span>Step 2 of 3</span>Trainer & schedule</legend>
+          <div class="form-grid">
+            <label>Preferred trainer<select name="trainer" id="trainer-select"><option>Best available</option><option>Juma M.</option><option>Aisha K.</option><option>Salim N.</option></select></label>
+            <label>Fitness level<select name="level"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></label>
+            <label>Preferred date<input type="date" name="date" id="booking-date" required></label>
+            <label>Preferred time<select name="time" required><option value="">Choose time</option><option>06:30 AM</option><option>08:00 AM</option><option>10:00 AM</option><option>04:00 PM</option><option>05:30 PM</option><option>07:00 PM</option></select></label>
+          </div>
+          <p class="step-help">We'll match the best coach if you're unsure who to pick.</p>
+        </fieldset>
+
+        <fieldset class="wizard-step" data-step="3">
+          <legend class="step-legend"><span>Step 3 of 3</span>Your details</legend>
+          <div class="form-grid">
+            <label>Full name<input type="text" name="name" placeholder="Your name" required></label>
+            <label>WhatsApp number<input type="tel" name="phone" placeholder="+255 ..." required></label>
+          </div>
+          <label class="full-label">Anything we should know?<textarea name="notes" rows="3" placeholder="Goals, injuries, hotel name..."></textarea></label>
+          <div class="booking-summary" aria-live="polite">
+            <small>YOUR REQUEST</small>
+            <div><span id="summary-package">Personal Training</span><i>·</i><span id="summary-location">Select area</span><i>·</i><span id="summary-date">Choose date</span></div>
+          </div>
+        </fieldset>
+
+        <div class="wizard-error" role="alert" aria-live="assertive"></div>
+
+        <div class="wizard-nav">
+          <button type="button" class="wizard-back" data-wizard-back>← Back</button>
+          <button type="button" class="wizard-next" data-wizard-next>Continue <span>→</span></button>
+          <button class="submit-booking" type="submit"><span>Continue to WhatsApp</span><span class="wa-mark" aria-hidden="true"><svg viewBox="0 0 32 32" role="img"><path d="M16.04 3C8.85 3 3 8.76 3 15.84c0 2.5.74 4.94 2.13 7.02L3 29l6.35-2.04a13.18 13.18 0 0 0 6.68 1.79h.01C23.23 28.75 29 23 29 15.9 29 8.82 23.23 3 16.04 3Zm0 23.58a11 11 0 0 1-5.62-1.52l-.4-.24-3.77 1.21 1.23-3.66-.26-.42a10.6 10.6 0 0 1-1.68-5.72c0-5.98 4.83-10.84 10.78-10.84 2.88 0 5.58 1.12 7.61 3.17A10.76 10.76 0 0 1 27.1 16.2c0 5.98-4.84 10.84-11.06 10.84Zm5.92-8.11c-.32-.16-1.92-.94-2.22-1.05-.3-.1-.51-.16-.73.16-.22.32-.84 1.05-1.03 1.27-.19.21-.38.24-.7.08-.33-.16-1.37-.5-2.61-1.6a9.72 9.72 0 0 1-1.81-2.22c-.19-.32-.02-.5.14-.66.15-.14.33-.37.49-.56.16-.19.21-.32.32-.54.11-.21.05-.4-.03-.56-.08-.16-.73-1.74-1-2.38-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.4-.3.32-1.13 1.1-1.13 2.69 0 1.58 1.17 3.11 1.33 3.33.16.21 2.29 3.45 5.55 4.84.78.33 1.38.53 1.85.68.78.24 1.49.21 2.05.13.63-.09 1.92-.78 2.19-1.53.27-.75.27-1.4.19-1.53-.08-.14-.3-.22-.62-.38Z"/></svg></span></button>
         </div>
-        <label class="full-label">Anything we should know?<textarea name="notes" rows="3" placeholder="Goals, injuries, hotel name..."></textarea></label>
-        <div class="booking-summary" aria-live="polite">
-          <small>YOUR REQUEST</small>
-          <div><span id="summary-package">Personal Training</span><i>·</i><span id="summary-location">Select area</span><i>·</i><span id="summary-date">Choose date</span></div>
-        </div>
-        <button class="submit-booking" type="submit"><span>Continue to WhatsApp</span><span class="wa-mark" aria-hidden="true"><svg viewBox="0 0 32 32" role="img"><path d="M16.04 3C8.85 3 3 8.76 3 15.84c0 2.5.74 4.94 2.13 7.02L3 29l6.35-2.04a13.18 13.18 0 0 0 6.68 1.79h.01C23.23 28.75 29 23 29 15.9 29 8.82 23.23 3 16.04 3Zm0 23.58a11 11 0 0 1-5.62-1.52l-.4-.24-3.77 1.21 1.23-3.66-.26-.42a10.6 10.6 0 0 1-1.68-5.72c0-5.98 4.83-10.84 10.78-10.84 2.88 0 5.58 1.12 7.61 3.17A10.76 10.76 0 0 1 27.1 16.2c0 5.98-4.84 10.84-11.06 10.84Zm5.92-8.11c-.32-.16-1.92-.94-2.22-1.05-.3-.1-.51-.16-.73.16-.22.32-.84 1.05-1.03 1.27-.19.21-.38.24-.7.08-.33-.16-1.37-.5-2.61-1.6a9.72 9.72 0 0 1-1.81-2.22c-.19-.32-.02-.5.14-.66.15-.14.33-.37.49-.56.16-.19.21-.32.32-.54.11-.21.05-.4-.03-.56-.08-.16-.73-1.74-1-2.38-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.4-.3.32-1.13 1.1-1.13 2.69 0 1.58 1.17 3.11 1.33 3.33.16.21 2.29 3.45 5.55 4.84.78.33 1.38.53 1.85.68.78.24 1.49.21 2.05.13.63-.09 1.92-.78 2.19-1.53.27-.75.27-1.4.19-1.53-.08-.14-.3-.22-.62-.38Z"/></svg></span></button>
-        <small class="form-note">WhatsApp will open with your details. Review and tap Send to complete the request.</small>
+        <small class="form-note">No payment now · WhatsApp confirmation within 30 min · Free cancellation</small>
       </form>
     </div>
   </div>
@@ -255,6 +319,7 @@
   <div class="toast" role="status" aria-live="polite"><span>✓</span><div><strong>Request received!</strong><small>We'll confirm with you on WhatsApp shortly.</small></div></div>
   <a class="whatsapp-float" href="https://wa.me/255717318156?text=Hello%20ZanziFit%2C%20I%20would%20like%20to%20book%20a%20trainer." target="_blank" rel="noopener" aria-label="Chat with ZanziFit on WhatsApp"><span aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16.04 3C8.85 3 3 8.76 3 15.84c0 2.5.74 4.94 2.13 7.02L3 29l6.35-2.04a13.18 13.18 0 0 0 6.68 1.79h.01C23.23 28.75 29 23 29 15.9 29 8.82 23.23 3 16.04 3Zm0 23.58a11 11 0 0 1-5.62-1.52l-.4-.24-3.77 1.21 1.23-3.66-.26-.42a10.6 10.6 0 0 1-1.68-5.72c0-5.98 4.83-10.84 10.78-10.84 2.88 0 5.58 1.12 7.61 3.17A10.76 10.76 0 0 1 27.1 16.2c0 5.98-4.84 10.84-11.06 10.84Zm5.92-8.11c-.32-.16-1.92-.94-2.22-1.05-.3-.1-.51-.16-.73.16-.22.32-.84 1.05-1.03 1.27-.19.21-.38.24-.7.08-.33-.16-1.37-.5-2.61-1.6a9.72 9.72 0 0 1-1.81-2.22c-.19-.32-.02-.5.14-.66.15-.14.33-.37.49-.56.16-.19.21-.32.32-.54.11-.21.05-.4-.03-.56-.08-.16-.73-1.74-1-2.38-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.4-.3.32-1.13 1.1-1.13 2.69 0 1.58 1.17 3.11 1.33 3.33.16.21 2.29 3.45 5.55 4.84.78.33 1.38.53 1.85.68.78.24 1.49.21 2.05.13.63-.09 1.92-.78 2.19-1.53.27-.75.27-1.4.19-1.53-.08-.14-.3-.22-.62-.38Z"/></svg></span><small>CHAT ON WHATSAPP</small></a>
   <button class="mobile-book-dock" data-open-booking><span><small>READY WHEN YOU ARE</small>Book your trainer</span><i>↗</i></button>
+  <button class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
   <script src="script.js"></script>
 </body>
 </html>

@@ -346,12 +346,79 @@ textarea { resize: vertical; }
   .mobile-book-dock small { display: block; color: var(--lime); font: 700 7px "Manrope"; letter-spacing: 1.2px; margin-bottom: 3px; }
   .mobile-book-dock i { width: 42px; height: 42px; background: var(--coral); display: grid; place-items: center; font-style: normal; font-size: 17px; }
   .whatsapp-float { display: none; }
+  .stats-inner { grid-template-columns: 1fr 1fr; gap: 26px 12px; }
+  .stat:nth-child(3)::before, .stat:nth-child(odd)::before { display: none; }
+  .back-to-top { display: none; }
+  .wizard-dots li small { display: none; }
+  .step-legend { font-size: 18px; }
+}
+
+@media (max-width: 980px) {
+  .stats-inner { gap: 18px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
   .reveal { opacity: 1; transform: none; }
 }
+/* ===== Scroll-spy active nav ===== */
+.desktop-nav a.active { color: var(--coral); }
+.desktop-nav a.active::after { right: 0; }
+
+/* ===== Stats / results band ===== */
+.stats { background: var(--green); color: #fff; padding: clamp(46px,6vw,72px) max(clamp(24px,7vw,110px), calc((100vw - 1500px)/2)); }
+.stats-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.stat { text-align: center; position: relative; padding: 8px 12px; }
+.stat + .stat::before { content: ""; position: absolute; left: -12px; top: 12%; bottom: 12%; width: 1px; background: rgba(255,255,255,.16); }
+.stat strong { display: block; font: 800 clamp(38px,5vw,62px)/1 "Manrope"; letter-spacing: -3px; color: #fff; }
+.stat span { display: block; margin-top: 12px; font: 700 11px "Manrope"; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,.62); }
+
+/* ===== Testimonials carousel ===== */
+.testimonials { position: relative; flex: 1; }
+.testimonial { position: absolute; inset: 0; opacity: 0; transform: translateY(14px); transition: opacity .5s, transform .5s; pointer-events: none; display: flex; flex-direction: column; justify-content: flex-start; }
+.testimonial.active { position: relative; opacity: 1; transform: none; pointer-events: auto; }
+.testimonial-controls { display: flex; align-items: center; gap: 16px; margin-top: 26px; }
+.testimonial-controls button { background: transparent; border: 1px solid rgba(255,255,255,.32); color: #fff; width: 40px; height: 40px; border-radius: 50%; transition: background .2s, border-color .2s, transform .2s; }
+.testimonial-controls button:hover { background: rgba(255,255,255,.12); transform: translateY(-2px); }
+.testimonial-dots { display: flex; gap: 9px; margin-right: auto; }
+.testimonial-dots button { width: 9px; height: 9px; padding: 0; border-radius: 50%; border: 0; background: rgba(255,255,255,.28); transition: width .3s, background .3s; }
+.testimonial-dots button.active { width: 26px; border-radius: 6px; background: var(--coral); }
+
+/* ===== Back to top ===== */
+.back-to-top { position: fixed; z-index: 37; left: 22px; bottom: 22px; width: 46px; height: 46px; border-radius: 50%; border: 0; background: var(--ink); color: #fff; font-size: 18px; box-shadow: 0 12px 30px rgba(7,30,27,.3); opacity: 0; visibility: hidden; transform: translateY(14px); transition: opacity .3s, transform .3s, visibility .3s, background .2s; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: none; }
+.back-to-top:hover { background: var(--coral); }
+
+/* ===== Booking wizard ===== */
+.wizard-progress { margin: -8px 0 30px; }
+.wizard-track { height: 4px; border-radius: 4px; background: var(--line); overflow: hidden; }
+.wizard-fill { display: block; height: 100%; width: 33.33%; background: var(--coral); border-radius: 4px; transition: width .4s cubic-bezier(.4,0,.2,1); }
+.wizard-dots { list-style: none; display: flex; justify-content: space-between; padding: 0; margin: 14px 0 0; }
+.wizard-dots li { display: flex; align-items: center; gap: 8px; font: 700 10px "Manrope"; letter-spacing: .6px; text-transform: uppercase; color: var(--muted-soft); transition: color .3s; }
+.wizard-dots li b { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--line); color: var(--ink); font-size: 11px; transition: background .3s, color .3s; }
+.wizard-dots li.active { color: var(--ink); }
+.wizard-dots li.active b, .wizard-dots li.done b { background: var(--coral); color: #fff; }
+.wizard-step { border: 0; padding: 0; margin: 0; min-inline-size: auto; display: none; animation: stepIn .4s ease; }
+.wizard-step.active { display: block; }
+@keyframes stepIn { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: none; } }
+.step-legend { padding: 0; font: 700 20px "Manrope"; letter-spacing: -.5px; margin-bottom: 20px; }
+.step-legend span { display: block; font: 800 9px "Manrope"; letter-spacing: 1.4px; color: var(--coral); margin-bottom: 8px; }
+.step-help { font-size: 11px; color: var(--muted-soft); margin: 18px 0 0; }
+.wizard-error { color: #c0392b; font-size: 11px; font-weight: 700; min-height: 0; margin-top: 14px; }
+.wizard-nav { display: flex; gap: 12px; align-items: center; margin-top: 22px; }
+.wizard-back { background: transparent; border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 14px 18px; font-weight: 700; color: var(--ink); transition: background .2s; }
+.wizard-back:hover { background: var(--cream); }
+.wizard-next { flex: 1; background: var(--ink); color: #fff; border: 0; border-radius: var(--radius-sm); padding: 15px 20px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 12px; transition: transform .2s, box-shadow .2s; }
+.wizard-next:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(20,42,39,.2); }
+.wizard-next span { transition: transform .2s; }
+.wizard-next:hover span { transform: translateX(4px); }
+.booking-form-hidden { display: none !important; }
+.submit-booking { flex: 1; margin-top: 0; }
+form.on-last-step .wizard-next { display: none; }
+form:not(.on-last-step) .submit-booking { display: none; }
+form.on-first-step .wizard-back { display: none; }
+input.invalid, select.invalid { border-color: #c0392b; }
+
 .scroll-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 200; pointer-events: none; }
 .scroll-progress span { display: block; width: 0; height: 100%; background: var(--coral); box-shadow: 0 0 10px rgba(242,107,79,.6); }
 .island-strip { min-height: 64px; background: var(--lime); color: var(--ink); display: flex; align-items: center; justify-content: center; gap: clamp(14px,2vw,32px); padding: 0 25px; overflow: hidden; white-space: nowrap; font: 800 10px "Manrope"; letter-spacing: 1.2px; }
